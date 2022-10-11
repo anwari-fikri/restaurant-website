@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { GiFullPizza } from "react-icons/gi";
 
@@ -18,20 +19,31 @@ const Navbar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="text-white">
-        <ul className="flex justify-evenly items-center">
-          <li className="mx-5">Home</li>
-          <li className="mx-5">Products</li>
-          <li className="mx-5">Menu</li>
-          <GiFullPizza className="w-20 h-20 mx-5" />
-          <li className="mx-5">Events</li>
-          <li className="mx-5">Blog</li>
-          <li className="mx-5">Contact</li>
-        </ul>
-      </nav>
+      <div className="flex">
+        <nav className="text-white">
+          <ul className="flex justify-evenly items-center">
+            <li className="mx-5">Home</li>
+            <li className="mx-5">Products</li>
+            <li className="mx-5">Menu</li>
+            <GiFullPizza className="w-20 h-20 mx-5" />
+            <li className="mx-5">Events</li>
+            <li className="mx-5">Blog</li>
+            <li className="mx-5">Contact</li>
+          </ul>
+        </nav>
+      </div>
 
       {/* Cart */}
-      <div className="">cart</div>
+      <div className="text-white">
+        <div className="relative">
+          <AiOutlineShoppingCart className="w-8 h-8" />
+          <div className="absolute top-[-10px] right-[-12px]">
+            <p className="bg-white rounded-full text-[#D1411E] w-5 h-5 flex justify-center items-center">
+              2
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

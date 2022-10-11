@@ -27,6 +27,10 @@ html {
     @apply text-sm md:text-base;
   }
 
+  p {
+    @apply text-xs md:text-sm;
+  }
+
   button {
     @apply shadow-xl shadow-gray-400 rounded-xl uppercase bg-gradient-to-r from-[#343680] to-[#709DFF] text-white;
   }
