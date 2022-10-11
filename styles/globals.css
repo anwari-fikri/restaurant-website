@@ -20,15 +20,15 @@ html {
   }
 
   h3 {
-    @apply text-xl md:text-2xl;
+    @apply text-xl lg:text-2xl;
   }
 
   h4 {
-    @apply text-sm md:text-base;
+    @apply text-sm lg:text-base;
   }
 
   p {
-    @apply text-xs md:text-sm;
+    @apply text-xs lg:text-sm;
   }
 
   button {
