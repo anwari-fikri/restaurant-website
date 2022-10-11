@@ -10,9 +10,7 @@ import {
 import { BsTelephone } from "react-icons/bs";
 import { GiFullPizza } from "react-icons/gi";
 
-const Navbar = () => {
-  const [nav, setNav] = useState(false);
-
+const Navbar = ({ nav, setNav }) => {
   const handleNav = () => {
     setNav(!nav);
   };
@@ -95,7 +93,7 @@ const Navbar = () => {
           className={
             nav
               ? "fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500 flex flex-col justify-between"
-              : "fixed left-[-100%] top-0 p-10 ease-in duration-500"
+              : "fixed left-[-100%] top-0 p-10 "
           }
         >
           <div>
