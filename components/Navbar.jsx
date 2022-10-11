@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { BsTelephone } from "react-icons/bs";
+import { GiFullPizza } from "react-icons/gi";
 
 const Navbar = () => {
   return (
@@ -17,7 +18,17 @@ const Navbar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="bg-white">menu</nav>
+      <nav className="text-white">
+        <ul className="flex justify-evenly items-center">
+          <li className="mx-5">Home</li>
+          <li className="mx-5">Products</li>
+          <li className="mx-5">Menu</li>
+          <GiFullPizza className="w-20 h-20 mx-5" />
+          <li className="mx-5">Events</li>
+          <li className="mx-5">Blog</li>
+          <li className="mx-5">Contact</li>
+        </ul>
+      </nav>
 
       {/* Cart */}
       <div className="">cart</div>
