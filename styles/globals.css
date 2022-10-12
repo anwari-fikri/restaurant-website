@@ -2,18 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.fade-anim {
-  animation: fadeAnim 1.5s ease-in-out;
-}
-@keyframes fadeAnim {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 @layer base {
   body {
     @apply bg-[#ECF0F3] text-[#1F2937] tracking-wide;
@@ -36,6 +24,10 @@
   }
 
   p {
+    @apply text-xs lg:text-sm;
+  }
+
+  label {
     @apply text-xs lg:text-sm;
   }
 }
