@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .fade-anim {
-  animation: fadeAnim 1s ease-out;
+  animation: fadeAnim 1.5s ease-in-out;
 }
 @keyframes fadeAnim {
   from {
