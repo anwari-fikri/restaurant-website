@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 
 // import Swiper core and required modules
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,16 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
-const Slider2 = ({ nav }) => {
-  const slideRef = useRef();
-
-  useEffect(() => {
-    console.log(nav);
-    nav
-      ? (slideRef.current.style.zIndex = -1)
-      : (slideRef.current.style.zIndex = 0);
-  }, [nav]);
-
+const Slider2 = () => {
   return (
     <Swiper
       slidesPerView={1}
@@ -35,7 +26,6 @@ const Slider2 = ({ nav }) => {
         "--swiper-theme-color": "#D1411E",
         zIndex: 0,
       }}
-      ref={slideRef}
     >
       <SwiperSlide>
         <img src="assets/ww.png" alt="" />

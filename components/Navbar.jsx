@@ -10,13 +10,15 @@ import {
 import { BsTelephone } from "react-icons/bs";
 import { GiFullPizza } from "react-icons/gi";
 
-const Navbar = ({ nav, setNav }) => {
+const Navbar = () => {
+  const [nav, setNav] = useState(false);
+
   const handleNav = () => {
     setNav(!nav);
   };
 
   return (
-    <div className="bg-[#D1411E] w-full h-28 px-10 sticky">
+    <div className="bg-[#D1411E] w-full h-28 px-10 sticky z-[100]">
       <div className="flex items-center justify-between w-full h-full ">
         {/* Order Now */}
         <div className="flex">
