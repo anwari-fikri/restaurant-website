@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PizzaList from "../components/PizzaList";
 import Slider from "../components/Slider";
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <Slider />
       <PizzaList />
+      <Footer />
     </div>
   );
 }
