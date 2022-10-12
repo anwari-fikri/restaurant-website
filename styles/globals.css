@@ -30,4 +30,8 @@
   label {
     @apply text-xs lg:text-sm;
   }
+
+  input {
+    @apply text-xs lg:text-sm;
+  }
 }
