@@ -18,7 +18,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-[#D1411E] w-full h-28 px-10 sticky z-[100]">
+    <div className="bg-[#D1411E] w-full h-28 px-10 fixed z-[100]">
       <div className="flex items-center justify-between w-full h-full ">
         {/* Order Now */}
         <div className="flex">
