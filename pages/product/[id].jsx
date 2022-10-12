@@ -4,6 +4,10 @@ import React, { useState } from "react";
 const Product = () => {
   const [size, setSize] = useState(1);
 
+  const changeSize = (event) => {
+    setSize(event.target.value);
+  };
+
   const pizza = {
     id: 1,
     img: "/assets/pizza.png",
@@ -26,6 +30,16 @@ const Product = () => {
           <p>{pizza.desc}</p>
         </div>
         <div>
+          <label>
+            <h3>Choose the size</h3>
+            <select value={size} onChange={changeSize}>
+              <option value={0}>Small</option>
+              <option value={1}>Medium</option>
+              <option value={2}>Large</option>
+            </select>
+          </label>
+        </div>
+        {/* <div>
           <h3>Choose Size</h3>
           <div onClick={() => setSize(0)}>
             <p className="active:underline">Small</p>
@@ -36,7 +50,7 @@ const Product = () => {
           <div onClick={() => setSize(2)}>
             <p>Large</p>
           </div>
-        </div>
+        </div> */}
         <div>
           <h3>Choose additional ingredient</h3>
           <div>
