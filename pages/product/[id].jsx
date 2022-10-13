@@ -20,7 +20,7 @@ const Product = () => {
     <div className="pt-28 w-full">
       <div className="max-w-[85%] h-full m-auto py-28 xl:max-w-[1240px] md:py-40">
         <div className="grid lg:grid-cols-2 gap-8">
-          <div className="flex justify-center items-center">
+          <div className="flex items-center">
             <div>
               <Image src={pizza.img} alt="" width={500} height={500} />
             </div>
