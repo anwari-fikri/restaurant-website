@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 
 const Slider2 = () => {
   return (
-    <div className="pt-28">
+    <div className="pt-28 md:pt-0">
       <Swiper
         slidesPerView={1}
         spaceBetween={30}
@@ -29,13 +29,13 @@ const Slider2 = () => {
         }}
       >
         <SwiperSlide>
-          <img src="assets/ww.png" alt="" />
+          <img src="assets/ww4.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="assets/ww2.png" alt="" />
+          <img src="assets/ww5.jpg" alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="assets/ww3.png" alt="" />
+          <img src="assets/ww6.jpg" alt="" />
         </SwiperSlide>
       </Swiper>
     </div>
