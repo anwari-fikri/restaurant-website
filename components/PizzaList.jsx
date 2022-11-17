@@ -1,7 +1,7 @@
 import React from "react";
 import PizzaItem from "./PizzaItem";
 
-const PizzaList = () => {
+const PizzaList = ({ pizzaList }) => {
   return (
     <div className="w-full md:h-screen py-10">
       <div className="max-w-[80%] mx-auto flex flex-col items-center justify-center xl:max-w-[1240px] md:h-[calc(100vh-112px)]">
@@ -15,12 +15,9 @@ const PizzaList = () => {
           </h4>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 place-items-center">
-          <PizzaItem />
-          <PizzaItem />
-          <PizzaItem />
-          <PizzaItem />
-          <PizzaItem />
-          <PizzaItem />
+          {pizzaList.map((pizza) => (
+            <PizzaItem key={pizza._id} pizza={pizza} />
+          ))}
         </div>
       </div>
     </div>

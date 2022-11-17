@@ -1,20 +1,36 @@
 import Image from "next/image";
 import React, { useState } from "react";
+import axios from "axios";
 
-const Product = () => {
+const Product = ({ pizza }) => {
+  const [price, setPrice] = useState(pizza.prices[1]);
   const [size, setSize] = useState(1);
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
+  const changePrice = (number) => {
+    setPrice(price + number);
+  };
 
   const changeSize = (event) => {
-    setSize(event.target.value);
+    let sizeIndex = event.target.value;
+
+    const difference = pizza.prices[sizeIndex] - pizza.prices[size];
+    setSize(sizeIndex);
+    changePrice(difference);
   };
 
-  const pizza = {
-    id: 1,
-    img: "/assets/pizza.png",
-    name: "CAMPAGNOLA",
-    price: [19.9, 23.9, 27.9],
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  const handleChange = (e, option) => {
+    const checked = e.target.checked;
+    if (checked) {
+      changePrice(option.price);
+      setExtras([...extras, option]);
+    } else {
+      changePrice(-option.price);
+      setExtras(extras.filter((extra) => extra._id !== option._id));
+    }
   };
+  console.log(quantity);
 
   return (
     <div className="pt-28 w-full">
@@ -22,17 +38,18 @@ const Product = () => {
         <div className="grid lg:grid-cols-2 gap-8">
           <div className="flex items-center">
             <div>
-              <Image src={pizza.img} alt="" width={500} height={500} />
+              <Image src={pizza.image} alt="" width={500} height={500} />
             </div>
           </div>
           <div>
             <div className="mb-5">
               <div className="pb-2">
-                <h1>{pizza.name}</h1>
+                <h1>{pizza.title}</h1>
                 <p>{pizza.desc}</p>
               </div>
-              <div>
-                <h2>${pizza.price[size]}</h2>
+              <div className="flex">
+                <h2>${price}</h2>
+                <p>each</p>
               </div>
             </div>
             <div className="p-5 bg-white rounded-3xl mb-3">
@@ -52,30 +69,19 @@ const Product = () => {
             <div className="p-5 bg-white rounded-3xl mb-3">
               <h3 className="pb-1">Choose additional ingredient</h3>
               <div>
-                <div>
-                  <input type="checkbox" id="double" name="double" />
-                  <label htmlFor="double" className="ml-2">
-                    Double Ingredients
-                  </label>
-                </div>
-                <div>
-                  <input type="checkbox" id="cheese" name="cheese" />
-                  <label htmlFor="cheese" className="ml-2">
-                    Extra Cheese
-                  </label>
-                </div>
-                <div>
-                  <input type="checkbox" id="spicy" name="spicy" />
-                  <label htmlFor="spicy" className="ml-2">
-                    Spicy Sauce
-                  </label>
-                </div>
-                <div>
-                  <input type="checkbox" id="garlic" name="garlic" />
-                  <label htmlFor="garlic" className="ml-2">
-                    Garlic Sauce
-                  </label>
-                </div>
+                {pizza.extraOptions.map((option) => (
+                  <div key={option._id}>
+                    <input
+                      type="checkbox"
+                      id={option.text}
+                      name={option.text}
+                      onChange={(e) => handleChange(e, option)}
+                    />
+                    <label htmlFor={option.text} className="ml-2">
+                      {option.text}
+                    </label>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="p-5 bg-white rounded-3xl mb-5">
@@ -83,7 +89,9 @@ const Product = () => {
               <input
                 type="number"
                 defaultValue={1}
+                onChange={(e) => setQuantity(e.target.value)}
                 className="outline outline-1 rounded-md p-2 bg-gray-100"
+                min={1}
               />
             </div>
             <div className="flex justify-center pb-3">
@@ -96,6 +104,17 @@ const Product = () => {
       </div>
     </div>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(
+    `http://localhost:3000/api/products/${params.id}`
+  );
+  return {
+    props: {
+      pizza: res.data,
+    },
+  };
 };
 
 export default Product;
