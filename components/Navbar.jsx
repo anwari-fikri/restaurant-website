@@ -9,6 +9,7 @@ import {
 } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { GiFullPizza } from "react-icons/gi";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -16,6 +17,8 @@ const Navbar = () => {
   const handleNav = () => {
     setNav(!nav);
   };
+
+  const quantity = useSelector((state) => state.cart.quantity);
 
   return (
     <div className="bg-[#D1411E] w-full h-28 px-10 fixed z-[100]">
@@ -60,14 +63,16 @@ const Navbar = () => {
 
         {/* Cart */}
         <div className="text-white hidden md:flex">
-          <div className="relative">
-            <AiOutlineShoppingCart className="w-8 h-8" />
-            <div className="absolute top-[-10px] right-[-12px] flex justify-center items-center">
-              <h4 className="bg-white rounded-full text-[#D1411E] w-5 h-5 text-center">
-                2
-              </h4>
+          <Link href="/cart" passHref>
+            <div className="relative">
+              <AiOutlineShoppingCart className="w-8 h-8" />
+              <div className="absolute top-[-10px] right-[-12px] flex justify-center items-center">
+                <h4 className="bg-white rounded-full text-[#D1411E] w-5 h-5 text-center">
+                  {quantity}
+                </h4>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
         {/* Hamburger Icon */}
         <div
@@ -77,7 +82,7 @@ const Navbar = () => {
           <AiOutlineMenu className="w-7 h-7" />
           <div className="absolute top-[-10px] right-[-12px] flex justify-center items-center">
             <h4 className="bg-white rounded-full pt-0.5 text-[#D1411E] w-5 h-5 text-center">
-              2
+              {quantity}
             </h4>
           </div>
         </div>
@@ -116,7 +121,7 @@ const Navbar = () => {
                 <AiOutlineShoppingCart className="w-8 h-8" />
                 <div className="absolute top-[-10px] right-[-12px] flex justify-center items-center">
                   <h4 className="bg-[#D1411E] text-white pt-0.5 rounded-full w-5 h-5 text-center">
-                    2
+                    {quantity}
                   </h4>
                 </div>
               </div>

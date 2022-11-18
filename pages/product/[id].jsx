@@ -1,12 +1,15 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/cartSlice";
 
 const Product = ({ pizza }) => {
   const [price, setPrice] = useState(pizza.prices[1]);
   const [size, setSize] = useState(1);
   const [extras, setExtras] = useState([]);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   const changePrice = (number) => {
     setPrice(price + number);
@@ -30,7 +33,10 @@ const Product = ({ pizza }) => {
       setExtras(extras.filter((extra) => extra._id !== option._id));
     }
   };
-  console.log(quantity);
+
+  const handleClick = () => {
+    dispatch(addProduct({ ...pizza, extras, price, quantity }));
+  };
 
   return (
     <div className="pt-28 w-full">
@@ -95,7 +101,10 @@ const Product = ({ pizza }) => {
               />
             </div>
             <div className="flex justify-center pb-3">
-              <button className="bg-[#D1411E] py-3 px-6 text-white rounded-md">
+              <button
+                onClick={handleClick}
+                className="bg-[#D1411E] py-3 px-6 text-white rounded-md"
+              >
                 Add to cart
               </button>
             </div>
